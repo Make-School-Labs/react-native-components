@@ -4,7 +4,8 @@ import { View, Text, StyleSheet } from 'react-native'
 const Title = (props) => {
   return (
     <View style={styles.container}>
-      <Text>Component Demo</Text>
+      {/* Use Text to create text */}
+      <Text style={styles.text}>Component Demo</Text>
     </View>
   )
 }
@@ -19,4 +20,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 40
   },
+  // Style text component with CSS styles 
+  text: {
+    color: '#333',
+    fontSize: 30,
+    fontWeight: 'bold'
+  }
 });

@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native'
 
+// Import an image 
 const kittenJPG = require('../assets/kitten.jpg')
 
 const ImageTest = (props) => {
@@ -8,12 +9,14 @@ const ImageTest = (props) => {
     <View style={styles.row}>
       <Text style={styles.text}>Image Example</Text>
       <View style={[styles.container, styles.horizontal]}>
+
         <Image 
-          style={styles.image}
-          source={kittenJPG} 
+          style={styles.image}  // Style the image
+          source={kittenJPG}    // set the source for the image
           resizeMode="contain"
           resizeMethod="resize"
         />
+
       </View>
     </View>
   )
@@ -23,9 +26,6 @@ export default ImageTest
 
 // Get dimensions object
 const { height, width } = Dimensions.get('window')
-
-console.log('**************')
-console.log(kittenJPG)
 
 const styles = StyleSheet.create({
   row: {

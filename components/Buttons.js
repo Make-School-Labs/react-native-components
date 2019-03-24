@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, Button, Slider, Switch } from 'react-native'
 class Buttons extends Component {
   constructor(props) {
     super(props)
+
+    // Use state to hold the value of the slider and switch
     this.state = {
       sliderValue: 0, 
       switchOn: false
@@ -11,8 +13,10 @@ class Buttons extends Component {
   }
   render() {
     const { sliderValue, switchOn } = this.state
-    const rowStyle = this.state.switchOn ? styles.row : styles.rowDark
-    const textStyle = this.state.switchOn ? styles.text : styles.textLight
+
+    // Use the value of switch state to manage style of components 
+    const rowStyle = this.state.switchOn ? styles.rowDark : styles.row
+    const textStyle = this.state.switchOn ? styles.textLight : styles.text
 
   return (
     <View style={rowStyle}>
@@ -23,26 +27,31 @@ class Buttons extends Component {
         <View style={{flexDirection:'column'}}>
 
           <Button
-            onPress={() => console.log('test')}
-            title="Test Button"
-            color="#841584"
+            // Handle button presses
+            onPress={() => this.setState({ sliderValue: 0 })}
+            title="Reset Button"  // Set the text of the button
+            color="#841584"       // Set the color of the button
             accessibilityLabel="Learn more about this purple button"
+            disabled={switchOn}   // Disable button
           />
 
           <Text style={{textAlign:'center'}}>{sliderValue}</Text>
 
           <Slider 
             style={{width:300}} 
-            minimumValue={0}
-            maximumValue={100}
-            step={1}
+            minimumValue={0}    // Set min value
+            maximumValue={100}  // Set max value
+            step={1}            // Set step change
+            // Use 'Controlled component pattern'
+            value={sliderValue}
             onValueChange={(value) => this.setState({ sliderValue: value })}
+            disabled={switchOn} // Disable slider
           />
 
           <Switch 
             style={{marginTop: 20}}
-            value={switchOn}
-            onValueChange={(value) => this.setState({ switchOn: value })}
+            value={!switchOn}
+            onValueChange={(value) => this.setState({ switchOn: !value })}
           />
           
         </View>

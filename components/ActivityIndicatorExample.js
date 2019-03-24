@@ -1,18 +1,38 @@
-import React from 'react'
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native'
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, ActivityIndicator, Switch } from 'react-native'
 
-const ActivityIndicatorExample = (props) => {
-  return (
-    <View style={styles.row}>
-      <Text style={styles.text}>Activity Indicator Component</Text>
-      <View style={[styles.container, styles.horizontal]}>
-        <ActivityIndicator size="large" color="#ff00ff" />
-        <ActivityIndicator size="small" color="#4A90E2" />
-        <ActivityIndicator size="large" color="#D0021B" />
-        <ActivityIndicator size="small" color="#9013FE" />
+class ActivityIndicatorExample extends Component {
+  constructor(props) {
+    super(props)
+    // Use state to manage the value of the switch
+    this.state = {
+      on: false
+    }
+  }
+  render() {
+    const { on } = this.state
+    return (
+      <View style={styles.row}>
+        <View style={{display: 'flex', alignItems:'center'}}>
+          <Text style={styles.text}>Activity Indicator Component</Text>
+          <Switch 
+            style={{marginTop: 30}}
+            // Use the 'controlled component pattern' to change state
+            value={on}
+            onValueChange={(value) => this.setState({ on: value })}
+          />
+        </View>
+
+        <View style={[styles.container, styles.horizontal]}>
+          {/* Use state 'on' to activate Activity indicators  */}
+          <ActivityIndicator animating={on} size="large" color="#ff00ff" />
+          <ActivityIndicator animating={on} size="small" color="#4A90E2" />
+          <ActivityIndicator animating={on} size="large" color="#D0021B" />
+          <ActivityIndicator animating={on} size="small" color="#9013FE" />
+        </View>
       </View>
-    </View>
-  )
+    )
+  }
 }
 
 export default ActivityIndicatorExample

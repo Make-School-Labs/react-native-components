@@ -10,6 +10,7 @@ import ImageBackgroundExample from './components/ImageBackgroundExample'
 export default class App extends React.Component {
   render() {
     return (
+      // Use ScrollView to create a scrollinglist of components
       <ScrollView>
         <Title />
         <ActivityIndicatorExample />
@@ -20,5 +21,6 @@ export default class App extends React.Component {
     );
   }
 }
+
 
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, ImageBackground, Dimensions } from 'react-native'
 
+// Import an image to be used with the component below
 const flowersJPG = require('../assets/flowers.jpg')
 
 const ImageBackgroundExample = (props) => {
@@ -8,9 +9,10 @@ const ImageBackgroundExample = (props) => {
     <View style={styles.container}>
       <ImageBackground 
         style={styles.image}
-        source={flowersJPG} 
+        source={flowersJPG} // assign the image as the source 
       >
-      <Text style={styles.text}>Image Background Example</Text>
+        {/* Content is wrapped in the ImageBackground */}
+        <Text style={styles.text}>Image Background Example</Text>
       </ImageBackground>
     </View>
   )
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
     width, 
     height: 200
   },
+  // It took a few styles to get the image to appear 
   image: {
     width: '100%',
     height: '100%',
